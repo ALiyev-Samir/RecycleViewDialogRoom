@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/personsFragment">
+
+
+    <fragment
+        android:id="@+id/personsFragment"
+        android:name="com.example.recycleviewdialog.PersonsFragment"
+        android:label="fragment_persons"
+        tools:layout="@layout/fragment_persons">
+        <action
+            android:id="@+id/action_personsFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment"
+            app:popUpTo="@id/personDetailsFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_personsFragment_to_addDialog"
+            app:destination="@id/addDialog" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/personDetailsFragment"
+        android:name="com.example.recycleviewdialog.PersonDetailsFragment"
+        android:label="fragment_person_details"
+        tools:layout="@layout/fragment_person_details">
+        <action
+            android:id="@+id/action_personDetailsFragment_to_personsFragment"
+            app:destination="@id/personsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:popUpTo="@id/personDetailsFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="person"
+            app:argType="com.example.recycleviewdialog.database.Person" />
+    </fragment>
+    <dialog
+        android:id="@+id/addDialog"
+        android:name="com.example.recycleviewdialog.AddDialog"
+        android:label="add_dialog"
+        tools:layout="@layout/add_dialog" />
+</navigation>
